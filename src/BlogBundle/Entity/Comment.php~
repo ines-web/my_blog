@@ -1,0 +1,46 @@
+<?php
+namespace BlogBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="comment")
+ */
+class Comment
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $author;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $content;
+
+    /**
+     * @ORM\Column(type="datetime", name="created_at")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Article", inversedBy="comments")
+     * @ORM\JoinColumn(name="article_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $article;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
+    // getters and setters...
+}

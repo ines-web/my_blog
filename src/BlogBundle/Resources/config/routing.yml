@@ -1,0 +1,11 @@
+blog_article:
+    resource: "@BlogBundle/Resources/config/routing/article.yml"
+    prefix:   /article
+
+blog_comment:
+    resource: "@BlogBundle/Resources/config/routing/comment.yml"
+    prefix:   /comment
+
+blog_homepage:
+    path:     /
+    defaults: { _controller: BlogBundle:Default:index }

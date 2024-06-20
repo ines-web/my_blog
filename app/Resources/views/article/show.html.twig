@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.content }}</p>
+
+    <h2>Comments</h2>
+    {% for comment in article.comments %}
+        <p><strong>{{ comment.author }}</strong> said: {{ comment.content }}</p>
+    {% endfor %}
+
+    <a href="{{ path('comment_new', {'articleId': article.id}) }}">Add Comment</a>
+{% endblock %}

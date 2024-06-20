@@ -1,0 +1,21 @@
+BlogBundle\Entity\Article:
+    type: entity
+    table: article
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        title:
+            type: string
+            length: 255
+        content:
+            type: text
+        createdAt:
+            type: datetime
+            column: created_at
+    oneToMany:
+        comments:
+            targetEntity: Comment
+            mappedBy: article
+            cascade: ["persist", "remove"]
